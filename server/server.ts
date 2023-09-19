@@ -17,13 +17,14 @@ function init() {
   });
 }
 
-async function addEndpoint(name, baseUrl) {
+async function addEndpoint(name: string, baseUrl: string) {
   const modelURL = baseUrl + 'model.json';
   const metadataURL = baseUrl + 'metadata.json';
   const model = await tmImage.load(modelURL, metadataURL);
   app.post('/' + name, (request, response) => {
     const base64Image = Buffer.from(request.body).toString('base64');
     const contentType = request.get('Content-Type');
+    //@ts-ignore
     getPrediction(model, base64Image, contentType, (output) => {
       response.send(output);
     });
@@ -35,6 +36,7 @@ function configureBodyParser() {
 }
 
 function configureBrowserPolyFills() {
+  //@ts-ignore
   global.window = new JSDOM(`
   <body>
     <script>
@@ -43,6 +45,7 @@ function configureBrowserPolyFills() {
   </body>`).window;
   global.document = window.document;
   global.fetch = require('node-fetch');
+  //@ts-ignore
   global.HTMLVideoElement = class HTMLVideoElement {};
 }
 
@@ -53,6 +56,7 @@ function configureEndPoints() {
   );
 }
 
+//@ts-ignore
 async function getPrediction(model, imageData, contentType, responseFunction) {
   const imageCanvas = canvas.createCanvas(64, 64);
   const canvasContext = imageCanvas.getContext('2d');
