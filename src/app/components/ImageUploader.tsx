@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import useTeachableModelPredict from '../hooks/useTeachableModelPredict';
 
 function ImageUploader() {
   const [inputImageSource, setInputImageSource] = useState<string>('');
