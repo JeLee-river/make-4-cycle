@@ -1,10 +1,10 @@
 import { RecycleInfo } from '@/libs/db/model';
 
 type RecycleResource = {
-  className: string, 
-  classImageSource: string, 
-  recycleInfo: string
-}
+  className: string;
+  classImageSource: string;
+  recycleInfo: string;
+};
 
 const recycleInfoDAO = {
   findRecycleInfo: async (className: string) => {
@@ -15,8 +15,8 @@ const recycleInfoDAO = {
   addRecycleInfo: async (recycleResource: RecycleResource) => {
     const { className, classImageSource, recycleInfo } = recycleResource;
     await RecycleInfo.create({ className, classImageSource, recycleInfo });
-    return className
-  }
+    return className;
+  },
 };
 
 export { recycleInfoDAO };
