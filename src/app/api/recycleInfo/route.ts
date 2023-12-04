@@ -12,3 +12,12 @@ export async function PostRecycleInfo(request: NextRequest) {
     { status: 201 }
   );
 }
+
+export async function GetRecycleInfo(request: NextRequest) {
+  await connectDB();
+
+  const className = await request.json();
+  const { classImageSource, recycleInfo } =
+    await recycleInfoDAO.findRecycleInfo(className);
+  return NextResponse.json({ className, classImageSource, recycleInfo });
+}
