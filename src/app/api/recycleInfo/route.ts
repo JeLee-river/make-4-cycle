@@ -17,7 +17,13 @@ export async function GetRecycleInfo(request: NextRequest) {
   await connectDB();
 
   const className = await request.json();
-  const { classImageSource, recycleInfo } =
-    await recycleInfoDAO.findRecycleInfo(className);
-  return NextResponse.json({ className, classImageSource, recycleInfo });
+  const recycleResource = await recycleInfoDAO.findRecycleInfo(className);
+  if (recycleResource === null) {
+    return NextResponse.json(
+      { error: `Cannot find ${className} recycle method` },
+      { status: 404 }
+    );
+  }
+
+  return NextResponse.json(recycleResource);
 }
