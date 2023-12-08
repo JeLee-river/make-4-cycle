@@ -2,7 +2,7 @@ import connectDB from '@/libs/db/connectDB';
 import { recycleInfoDAO } from '@/libs/db/recycleInfoDAO';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function PostRecycleInfo(request: NextRequest) {
+export async function POST(request: NextRequest) {
   await connectDB();
 
   const recycleResource = await request.json();
@@ -13,10 +13,10 @@ export async function PostRecycleInfo(request: NextRequest) {
   );
 }
 
-export async function GetRecycleInfo(request: NextRequest) {
+export async function GET(request: NextRequest) {
   await connectDB();
 
-  const className = await request.json();
+  const { className } = await request.json();
   const recycleResource = await recycleInfoDAO.findRecycleInfo(className);
   if (recycleResource === null) {
     return NextResponse.json(
