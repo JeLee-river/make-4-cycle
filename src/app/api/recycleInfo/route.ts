@@ -12,18 +12,3 @@ export async function POST(request: NextRequest) {
     { status: 201 }
   );
 }
-
-export async function GET(request: NextRequest) {
-  await connectDB();
-
-  const { className } = await request.json();
-  const recycleResource = await recycleInfoDAO.findRecycleInfo(className);
-  if (recycleResource === null) {
-    return NextResponse.json(
-      { error: `Cannot find ${className} recycle method` },
-      { status: 404 }
-    );
-  }
-
-  return NextResponse.json(recycleResource);
-}
