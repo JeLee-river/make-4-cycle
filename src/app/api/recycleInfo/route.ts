@@ -1,13 +1,14 @@
 import connectDB from '@/libs/db/connectDB';
-import { RecycleInfo } from '@/libs/db/model';
+import { recycleInfoDAO } from '@/libs/db/recycleInfoDAO';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
-  const { className, classImageSource, recycleInfo } = await request.json();
   await connectDB();
-  await RecycleInfo.create({ className, classImageSource, recycleInfo });
+
+  const recycleResource = await request.json();
+  const className = await recycleInfoDAO.addRecycleInfo(recycleResource);
   return NextResponse.json(
-    { message: `Get ${className} recycle method` },
+    { message: `Add ${className} recycle method` },
     { status: 201 }
   );
 }
