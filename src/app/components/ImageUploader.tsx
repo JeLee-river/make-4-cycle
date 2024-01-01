@@ -1,31 +1,14 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 
-function ImageUploader() {
-  const [inputImageSource, setInputImageSource] = useState<string>('');
+type ImageUploaderType = {
+  inputImageSource: string;
+};
 
-  const handleChangePreviewImage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const usersInputImage = event.target.files;
-    if (usersInputImage) {
-      const usersInputImageURL = URL.createObjectURL(usersInputImage[0]);
-      setInputImageSource(usersInputImageURL);
-    }
-  };
-
+function ImageUploader({ inputImageSource }: ImageUploaderType) {
   return (
     <>
-      <div>
-        <input
-          type='file'
-          accept='image/png, image/jpeg, image/jpg'
-          onChange={handleChangePreviewImage}
-        />
-      </div>
-      {inputImageSource.length > 0 && (
+      {inputImageSource && (
         <div className='ImageUploader_previewUploadImage'>
           <Image
             src={inputImageSource}
