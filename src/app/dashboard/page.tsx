@@ -51,7 +51,7 @@ function Dashboard() {
       </div>
       <ImageUploader
         inputImageSource={inputImageSource}
-        prediction={prediction}
+        prediction={prediction!}
       />
     </>
   );
