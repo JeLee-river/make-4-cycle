@@ -49,7 +49,10 @@ function Dashboard() {
           onChange={handleChangePreviewImage}
         />
       </div>
-      <ImageUploader inputImageSource={inputImageSource} />
+      <ImageUploader
+        inputImageSource={inputImageSource}
+        prediction={prediction!}
+      />
     </>
   );
 }
