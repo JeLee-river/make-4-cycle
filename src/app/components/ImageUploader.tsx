@@ -25,7 +25,15 @@ function ImageUploader({ inputImageSource, prediction }: ImageUploaderType) {
               alt='업로드한 이미지'
             />
           </div>
-          <Link href={`/${prediction.className}`}>분리수거 방법 확인</Link>
+          <Link
+            href={
+              prediction && prediction.probability > 30
+                ? `/${prediction.className}`
+                : `/`
+            }
+          >
+            분리수거 방법 확인
+          </Link>
         </>
       )}
     </>
