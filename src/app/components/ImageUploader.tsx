@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 type Prediction = {
   className: string;
@@ -30,7 +31,7 @@ function ImageUploader({ inputImageSource, prediction }: ImageUploaderType) {
             href={
               prediction && prediction.probability > 0.7
                 ? `/${prediction.className}`
-                : `/`
+                : notFound()
             }
           >
             분리수거 방법 확인
