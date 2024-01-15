@@ -25,9 +25,10 @@ function ImageUploader({ inputImageSource, prediction }: ImageUploaderType) {
               alt='업로드한 이미지'
             />
           </div>
+          <p>{prediction.probability}</p>
           <Link
             href={
-              prediction && prediction.probability > 30
+              prediction && prediction.probability > 0.7
                 ? `/${prediction.className}`
                 : `/`
             }
