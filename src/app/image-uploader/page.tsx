@@ -9,7 +9,7 @@ type Prediction = {
   probability: number;
 };
 
-function Dashboard() {
+function ImageUploaderPage() {
   const [prediction, setPrediction] = useState<Prediction | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [inputImageSource, setInputImageSource] = useState<string>('');
@@ -57,4 +57,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default ImageUploaderPage;
