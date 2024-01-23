@@ -1,15 +1,18 @@
 import { Schema } from 'mongoose';
 
 const recycleInfoSchema = new Schema({
-  className: {
+  category: {
     type: String,
     required: true,
   },
-  classImageSource: {
+  subCategory: {
+    type: String,
+  },
+  imageSource: {
     type: String,
     required: true,
   },
-  recycleInfo: {
+  description: {
     type: String,
     required: true,
   },
