@@ -3,14 +3,10 @@
 import { useState, useEffect } from 'react';
 import ImageUploader from '../../components/ImageUploader';
 import useTeachableModelPredict from '../../hooks/useTeachableModelPredict';
-
-type Prediction = {
-  className: string;
-  probability: number;
-};
+import { PredictionType } from '@/app/types/types';
 
 function ImageUploaderPage() {
-  const [prediction, setPrediction] = useState<Prediction | null>(null);
+  const [prediction, setPrediction] = useState<PredictionType | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [inputImageSource, setInputImageSource] = useState<string>('');
 
