@@ -1,5 +1,5 @@
-import connectDB from '@/lib/db/connectDB';
-import { recycleInfoDAO } from '@/lib/db/recycleInfoDAO';
+import connectDB from '@database/connectDB';
+import { recycleInfoDAO } from '@database/recycleInfoDAO';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(

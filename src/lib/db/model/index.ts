@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { recycleInfoSchema } from '../schemas/recycleInfo';
+import { recycleInfoSchema } from '@database/schemas/recycleInfo';
 
 export const RecycleInfo =
   mongoose.models.RecycleInfo ||

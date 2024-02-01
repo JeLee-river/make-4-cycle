@@ -1,5 +1,5 @@
 import { RecycleInformationType } from '@/app/types/types';
-import { RecycleInfo } from '@/lib/db/model';
+import { RecycleInfo } from '@database/model';
 
 const recycleInfoDAO = {
   findRecycleInfo: async (className: string) => {
