@@ -1,6 +1,6 @@
 export interface RecycleInformationType {
   category: string;
-  subCategory: string;
+  subCategory?: string;
   imageSource: string;
   description: string;
 }
