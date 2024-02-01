@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import ImageUploader from '../../components/ImageUploader';
-import useTeachableModelPredict from '../../hooks/useTeachableModelPredict';
+import ImageUploader from '@/app/components/ImageUploader';
+import useTeachableModelPredict from '@/app/hooks/useTeachableModelPredict';
 import { PredictionType } from '@/app/types/types';
 
 function ImageUploaderPage() {
