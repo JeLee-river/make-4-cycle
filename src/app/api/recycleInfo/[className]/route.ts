@@ -4,15 +4,15 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { className: string } }
+  { params }: { params: { category: string } }
 ) {
   await connectDB();
 
-  const className = params.className;
-  const recycleResource = await recycleInfoDAO.findRecycleInfo(className);
+  const category = params.category;
+  const recycleResource = await recycleInfoDAO.findRecycleInfo(category);
   if (recycleResource === null) {
     return NextResponse.json(
-      { error: `Cannot find ${className} recycle method` },
+      { error: `Cannot find ${category} recycle method` },
       { status: 404 }
     );
   }
