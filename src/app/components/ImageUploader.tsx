@@ -1,15 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-type Prediction = {
-  className: string;
-  probability: number;
-};
+import { PredictionType } from '../types/types';
 
 type ImageUploaderType = {
   inputImageSource: string;
-  prediction: Prediction;
+  prediction: PredictionType;
 };
 
 function ImageUploader({ inputImageSource, prediction }: ImageUploaderType) {
@@ -29,7 +25,7 @@ function ImageUploader({ inputImageSource, prediction }: ImageUploaderType) {
           <Link
             href={
               prediction && prediction.probability > 0.7
-                ? `/${prediction.className}`
+                ? `/${prediction.category}/${prediction.subCategory}`
                 : '/nonexistence-material'
             }
           >
