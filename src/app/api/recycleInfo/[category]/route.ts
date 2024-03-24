@@ -1,10 +1,11 @@
+import { MaterialType } from '@/app/types/types';
 import connectDB from '@database/connectDB';
 import { recycleInfoDAO } from '@database/recycleInfoDAO';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { category: string } }
+  { params }: { params: MaterialType }
 ) {
   await connectDB();
 
