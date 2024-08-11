@@ -8,7 +8,7 @@ import { PredictionType } from '@/app/types/types';
 function ImageUploaderPage() {
   const [prediction, setPrediction] = useState<PredictionType | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [inputImageSource, setInputImageSource] = useState<string>('');
+  const [inputImage, setInputImage] = useState<string>('');
 
   const handleChangePreviewImage = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -16,7 +16,7 @@ function ImageUploaderPage() {
     const usersInputImage = event.target.files;
     if (usersInputImage) {
       const usersInputImageURL = URL.createObjectURL(usersInputImage[0]);
-      setInputImageSource(usersInputImageURL);
+      setInputImage(usersInputImageURL);
     }
   };
 
@@ -24,17 +24,17 @@ function ImageUploaderPage() {
     async function PredictImage() {
       setLoading(true);
       const targetImage = new Image();
-      targetImage.src = inputImageSource;
+      targetImage.src = inputImage;
       await targetImage.decode();
       const result = await useTeachableModelPredict(targetImage);
       setPrediction(result);
       setLoading(false);
     }
 
-    if (inputImageSource) {
+    if (inputImage) {
       PredictImage();
     }
-  }, [inputImageSource]);
+  }, [inputImage]);
 
   return (
     <>
@@ -45,10 +45,7 @@ function ImageUploaderPage() {
           onChange={handleChangePreviewImage}
         />
       </div>
-      <ImageUploader
-        inputImageSource={inputImageSource}
-        prediction={prediction!}
-      />
+      <ImageUploader inputImageSource={inputImage} prediction={prediction!} />
     </>
   );
 }
