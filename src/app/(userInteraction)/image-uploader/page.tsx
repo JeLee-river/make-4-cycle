@@ -36,6 +36,14 @@ function ImageUploaderPage() {
     }
   }, [inputImage]);
 
+  useEffect(() => {
+    return () => {
+      if (inputImage) {
+        URL.revokeObjectURL(inputImage);
+      }
+    };
+  }, [inputImage]);
+
   return (
     <>
       <div>
