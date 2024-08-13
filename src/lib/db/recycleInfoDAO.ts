@@ -17,8 +17,9 @@ const recycleInfoDAO = {
   },
 
   addRecycleInfo: async (recycleResource: RecycleInformationType) => {
-    const { category } = recycleResource;
     await RecycleInfo.create(recycleResource);
+
+    const { category } = recycleResource;
     return category;
   },
 };
