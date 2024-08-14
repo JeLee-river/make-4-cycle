@@ -1,15 +1,19 @@
-import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';
+async function getRecycleInfo(category: string) {
+  const information = await fetch(
+    `${process.env.NEXT_PUBLIC_API}/recycleInfo/${category}`
+  ).then((res) => res.json());
+  const { recycleInfo } = information;
 
-const getServerSideProps = (async (context) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API}/recycleInfo/${context.params?.category}`
-  );
-  const { recycleInfo }: { recycleInfo: string } = await res.json();
-  return { props: { recycleInfo } };
-}) satisfies GetServerSideProps<{ recycleInfo: string }>;
+  return recycleInfo;
+}
 
-export default function Page({
-  recycleInfo,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default async function RecycleInfo({
+  params,
+}: {
+  params: { category: string };
+}) {
+  const category = params.category;
+  const recycleInfo = await getRecycleInfo(category);
+
   return <h1>{recycleInfo}</h1>;
 }
