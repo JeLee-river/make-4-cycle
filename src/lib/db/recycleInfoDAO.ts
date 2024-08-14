@@ -16,10 +16,11 @@ const recycleInfoDAO = {
     return categorizedRecycleInfo;
   },
 
-  addRecycleInfo: async (recycleResource: RecycleInformationType) => {
-    const { category, imageSource, description } = recycleResource;
-    await RecycleInfo.create({ category, imageSource, description });
-    return category;
+  addRecycleInfo: async (recycleResource: RecycleInformationType[]) => {
+    await RecycleInfo.create(recycleResource);
+
+    const categoryList = recycleResource.map((resources) => resources.category);
+    return categoryList;
   },
 };
 

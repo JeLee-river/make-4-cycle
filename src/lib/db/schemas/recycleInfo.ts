@@ -12,7 +12,7 @@ const recycleInfoSchema = new Schema({
     type: String,
     required: true,
   },
-  description: {
+  recycleInfo: {
     type: String,
     required: true,
   },

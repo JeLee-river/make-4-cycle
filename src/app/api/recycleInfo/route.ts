@@ -6,9 +6,9 @@ export async function POST(request: NextRequest) {
   await connectDB();
 
   const recycleResource = await request.json();
-  const category = await recycleInfoDAO.addRecycleInfo(recycleResource);
+  const categoryList = await recycleInfoDAO.addRecycleInfo(recycleResource);
   return NextResponse.json(
-    { message: `Add ${category} recycle method` },
+    { message: `Add ${categoryList.join(', ')} recycle method` },
     { status: 201 }
   );
 }
