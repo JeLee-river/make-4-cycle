@@ -2,7 +2,7 @@ export interface RecycleInformationType {
   category: string;
   subCategory?: string;
   imageSource: string;
-  description: string;
+  recycleInfo: string;
 }
 
 export type MaterialType = Pick<
