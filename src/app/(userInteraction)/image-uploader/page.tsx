@@ -53,7 +53,9 @@ function ImageUploaderPage() {
           onChange={handleChangePreviewImage}
         />
       </div>
-      <ImageUploader inputImageSource={inputImage} prediction={prediction!} />
+      {prediction && (
+        <ImageUploader inputImageSource={inputImage} prediction={prediction} />
+      )}
     </>
   );
 }

@@ -9,6 +9,14 @@ type ImageUploaderType = {
 };
 
 function ImageUploader({ inputImageSource, prediction }: ImageUploaderType) {
+  const probability = prediction.probability;
+  const categoryArray = prediction.category.split('-');
+  const category = categoryArray.shift();
+  const subCategory = categoryArray.join('-');
+  const recycleInfoLink = subCategory
+    ? `/${category}/${subCategory}`
+    : `/${category}`;
+
   return (
     <>
       {inputImageSource && prediction && (
@@ -21,11 +29,11 @@ function ImageUploader({ inputImageSource, prediction }: ImageUploaderType) {
               alt='업로드한 이미지'
             />
           </div>
-          <p>{prediction.probability}</p>
+          <p>{probability}</p>
           <Link
             href={
-              prediction && prediction.probability > 0.7
-                ? `/${prediction.category}/${prediction.subCategory}`
+              prediction && probability > 0.7
+                ? recycleInfoLink
                 : '/nonexistence-material'
             }
           >
