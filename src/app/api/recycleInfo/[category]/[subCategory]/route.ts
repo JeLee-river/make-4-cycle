@@ -10,7 +10,11 @@ export async function GET(
   await connectDB();
 
   const category = params.category;
-  const recycleResource = await recycleInfoDAO.findRecycleInfo(category);
+  const subCategory = params.subCategory;
+  const recycleResource = await recycleInfoDAO.findRecycleInfo(
+    category,
+    subCategory
+  );
   if (recycleResource === null) {
     return NextResponse.json(
       { error: `Cannot find ${category} recycle method` },
