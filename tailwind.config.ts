@@ -5,6 +5,9 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {},
+      fontFamily: {
+        sans: ['Goorm Sans', 'sans-serif'],
+      },
     },
   },
   plugins: [],
