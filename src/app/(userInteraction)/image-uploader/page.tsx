@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import ImageUploader from '@/app/components/ImageUploader';
+import DragImageHandler from '@/app/components/DragImageHandler';
 import useTeachableModelPredict from '@/app/hooks/useTeachableModelPredict';
 import { PredictionType } from '@/app/types/types';
 
@@ -46,15 +47,18 @@ function ImageUploaderPage() {
 
   return (
     <>
-      <div>
-        <input
-          type='file'
-          accept='image/png, image/jpeg, image/jpg'
-          onChange={handleChangePreviewImage}
-        />
-      </div>
-      {prediction && (
+      {prediction ? (
         <ImageUploader inputImageSource={inputImage} prediction={prediction} />
+      ) : (
+        <div>
+          <input
+            className='hidden'
+            type='file'
+            accept='image/png, image/jpeg, image/jpg'
+            onChange={handleChangePreviewImage}
+          />
+          <DragImageHandler setInputImage={setInputImage} />
+        </div>
       )}
     </>
   );
