@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: MaterialType }
+  { params }: { params: MaterialType },
 ) {
   await connectDB();
 
@@ -13,12 +13,12 @@ export async function GET(
   const subCategory = params.subCategory;
   const recycleResource = await recycleInfoDAO.findRecycleInfo(
     category,
-    subCategory
+    subCategory,
   );
   if (recycleResource === null) {
     return NextResponse.json(
       { error: `Cannot find ${category} recycle method` },
-      { status: 404 }
+      { status: 404 },
     );
   }
 

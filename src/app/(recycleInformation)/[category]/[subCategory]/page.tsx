@@ -3,7 +3,7 @@ import { MaterialType } from '@/app/types/types';
 
 async function getRecycleInfo(segment: string) {
   const information = await fetch(
-    `${process.env.NEXT_PUBLIC_API}/recycleInfo/${segment}`
+    `${process.env.NEXT_PUBLIC_API}/recycleInfo/${segment}`,
   ).then((res) => res.json());
   const { imageSource, recycleInfo } = information;
 

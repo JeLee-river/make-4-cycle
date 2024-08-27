@@ -9,6 +9,6 @@ export async function POST(request: NextRequest) {
   const categoryList = await recycleInfoDAO.addRecycleInfo(recycleResource);
   return NextResponse.json(
     { message: `Add ${categoryList.join(', ')} recycle method` },
-    { status: 201 }
+    { status: 201 },
   );
 }

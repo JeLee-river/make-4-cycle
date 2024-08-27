@@ -7,7 +7,7 @@ const recycleInfoDAO = {
 
     if (subCategory) {
       const targetRecycleInfo = categorizedRecycleInfo.find(
-        (information) => information.subCategory === subCategory
+        (information) => information.subCategory === subCategory,
       );
 
       return targetRecycleInfo;
