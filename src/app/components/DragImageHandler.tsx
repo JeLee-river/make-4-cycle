@@ -1,7 +1,11 @@
 function DragImageHandler({
   setInputImage,
+  handleUploadClick,
 }: {
   setInputImage: React.Dispatch<React.SetStateAction<string>>;
+  handleUploadClick: (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => void;
 }) {
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
@@ -31,6 +35,7 @@ function DragImageHandler({
       <div
         onDragOver={handleDragOver}
         onDrop={handleDrop}
+        onClick={handleUploadClick}
         className='flex h-64 w-96 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 transition-colors hover:border-gray-400'
       >
         드래그 앤 드롭

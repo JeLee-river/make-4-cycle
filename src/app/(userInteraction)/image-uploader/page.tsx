@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ImageUploader from '@/app/components/ImageUploader';
 import DragImageHandler from '@/app/components/DragImageHandler';
 import useTeachableModelPredict from '@/app/hooks/useTeachableModelPredict';
@@ -10,6 +10,7 @@ function ImageUploaderPage() {
   const [prediction, setPrediction] = useState<PredictionType | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [inputImage, setInputImage] = useState<string>('');
+  const inputImageRef = useRef<HTMLInputElement>(null);
 
   const handleChangePreviewImage = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -18,6 +19,12 @@ function ImageUploaderPage() {
     if (usersInputImage) {
       const usersInputImageURL = URL.createObjectURL(usersInputImage[0]);
       setInputImage(usersInputImageURL);
+    }
+  };
+
+  const handleUploadClick = () => {
+    if (inputImageRef.current) {
+      inputImageRef.current.click();
     }
   };
 
@@ -50,14 +57,24 @@ function ImageUploaderPage() {
       {prediction ? (
         <ImageUploader inputImageSource={inputImage} prediction={prediction} />
       ) : (
-        <div>
+        <div className='flex flex-col items-center justify-center'>
+          <button
+            className='w-1/3 rounded-3xl bg-yellow hover:bg-green text-dark-green hover:text-white text-1xl font-medium text-center'
+            onClick={handleUploadClick}
+          >
+            파일 업로드하기
+          </button>
           <input
+            ref={inputImageRef}
             className='hidden'
             type='file'
             accept='image/png, image/jpeg, image/jpg'
             onChange={handleChangePreviewImage}
           />
-          <DragImageHandler setInputImage={setInputImage} />
+          <DragImageHandler
+            setInputImage={setInputImage}
+            handleUploadClick={handleUploadClick}
+          />
         </div>
       )}
     </>
