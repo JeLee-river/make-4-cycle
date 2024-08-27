@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ImageUploader from '@/app/components/ImageUploader';
 import DragImageHandler from '@/app/components/DragImageHandler';
 import useTeachableModelPredict from '@/app/hooks/useTeachableModelPredict';
@@ -10,14 +10,21 @@ function ImageUploaderPage() {
   const [prediction, setPrediction] = useState<PredictionType | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [inputImage, setInputImage] = useState<string>('');
+  const inputImageRef = useRef<HTMLInputElement>(null);
 
   const handleChangePreviewImage = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const usersInputImage = event.target.files;
     if (usersInputImage) {
       const usersInputImageURL = URL.createObjectURL(usersInputImage[0]);
       setInputImage(usersInputImageURL);
+    }
+  };
+
+  const handleUploadClick = () => {
+    if (inputImageRef.current) {
+      inputImageRef.current.click();
     }
   };
 
@@ -47,18 +54,31 @@ function ImageUploaderPage() {
 
   return (
     <>
+      <input
+        ref={inputImageRef}
+        className='hidden'
+        type='file'
+        accept='image/png, image/jpeg, image/jpg'
+        onChange={handleChangePreviewImage}
+      />
       {prediction ? (
-        <ImageUploader inputImageSource={inputImage} prediction={prediction} />
-      ) : (
-        <div>
-          <input
-            className='hidden'
-            type='file'
-            accept='image/png, image/jpeg, image/jpg'
-            onChange={handleChangePreviewImage}
+        <div className='flex flex-col items-center justify-center'>
+          <button
+            className='text-1xl w-1/3 rounded-3xl bg-yellow text-center font-medium text-dark-green hover:bg-green hover:text-white'
+            onClick={handleUploadClick}
+          >
+            파일 업로드하기
+          </button>
+          <ImageUploader
+            inputImageSource={inputImage}
+            prediction={prediction}
           />
-          <DragImageHandler setInputImage={setInputImage} />
         </div>
+      ) : (
+        <DragImageHandler
+          setInputImage={setInputImage}
+          handleUploadClick={handleUploadClick}
+        />
       )}
     </>
   );
