@@ -54,9 +54,14 @@ function ImageUploaderPage() {
 
   return (
     <>
+      <input
+        ref={inputImageRef}
+        className='hidden'
+        type='file'
+        accept='image/png, image/jpeg, image/jpg'
+        onChange={handleChangePreviewImage}
+      />
       {prediction ? (
-        <ImageUploader inputImageSource={inputImage} prediction={prediction} />
-      ) : (
         <div className='flex flex-col items-center justify-center'>
           <button
             className='w-1/3 rounded-3xl bg-yellow hover:bg-green text-dark-green hover:text-white text-1xl font-medium text-center'
@@ -64,18 +69,16 @@ function ImageUploaderPage() {
           >
             파일 업로드하기
           </button>
-          <input
-            ref={inputImageRef}
-            className='hidden'
-            type='file'
-            accept='image/png, image/jpeg, image/jpg'
-            onChange={handleChangePreviewImage}
-          />
-          <DragImageHandler
-            setInputImage={setInputImage}
-            handleUploadClick={handleUploadClick}
+          <ImageUploader
+            inputImageSource={inputImage}
+            prediction={prediction}
           />
         </div>
+      ) : (
+        <DragImageHandler
+          setInputImage={setInputImage}
+          handleUploadClick={handleUploadClick}
+        />
       )}
     </>
   );
