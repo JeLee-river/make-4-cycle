@@ -13,7 +13,7 @@ function ImageUploaderPage() {
   const inputImageRef = useRef<HTMLInputElement>(null);
 
   const handleChangePreviewImage = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const usersInputImage = event.target.files;
     if (usersInputImage) {
@@ -64,7 +64,7 @@ function ImageUploaderPage() {
       {prediction ? (
         <div className='flex flex-col items-center justify-center'>
           <button
-            className='w-1/3 rounded-3xl bg-yellow hover:bg-green text-dark-green hover:text-white text-1xl font-medium text-center'
+            className='text-1xl w-1/3 rounded-3xl bg-yellow text-center font-medium text-dark-green hover:bg-green hover:text-white'
             onClick={handleUploadClick}
           >
             파일 업로드하기
