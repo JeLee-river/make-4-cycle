@@ -36,13 +36,16 @@ function DragImageHandler({
         onDragOver={handleDragOver}
         onDrop={handleDrop}
         onClick={handleUploadClick}
-        className='flex h-64 w-96 cursor-pointer flex-col items-center justify-center gap-1 rounded-lg border-2 border-dashed border-gray-300 bg-slate-300 transition-colors hover:border-gray-400'
+        className='flex h-72 min-h-min w-96 min-w-min cursor-pointer flex-col items-center justify-center gap-4 rounded-lg border-2 border-dashed border-gray-300 bg-slate-300 p-3 transition-colors hover:border-gray-400'
       >
-        <h3 className='text-2xl font-medium text-olive'>
-          이미지 드래그 앤 드롭 또는 클릭
+        <h3 className='text-xl/8 font-medium leading-4 text-olive'>
+          이미지 드래그 앤 드롭
         </h3>
-        <p className='text-1xl font-regular text-olive'>
-          이미지 파일 형식만 가능합니다. (jpg, png, jpeg)
+        <span className='text-1xl relative font-regular text-olive before:absolute before:right-8 before:top-1/2 before:inline-block before:h-px before:w-full before:-translate-y-1/2 before:bg-deep-green before:content-[""] after:absolute after:left-8 after:top-1/2 after:inline-block after:h-px after:w-full after:-translate-y-1/2 after:bg-deep-green after:content-[""]'>
+          또는
+        </span>
+        <p className='text-xl/8 font-medium leading-4 text-olive'>
+          클릭하여 파일 선택
         </p>
       </div>
     </>
