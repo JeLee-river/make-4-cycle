@@ -22,8 +22,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {children}
-        <Footer />
+        <div className='flex flex-col'>
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
