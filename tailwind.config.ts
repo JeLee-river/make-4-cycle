@@ -9,7 +9,11 @@ const config: Config = {
       bold: '700',
     },
     extend: {
-      backgroundImage: {},
+      backgroundImage: {
+        main: "url('https://res.cloudinary.com/dr26wooar/image/upload/v1711363534/make4cycle/main.jpg')",
+        dropbox:
+          "url('https://res.cloudinary.com/dr26wooar/image/upload/v1725530670/make4cycle/dropbox.png')",
+      },
       fontFamily: {
         sans: ['Goorm Sans', 'sans-serif'],
       },
