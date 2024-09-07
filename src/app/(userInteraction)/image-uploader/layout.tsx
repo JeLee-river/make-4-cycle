@@ -4,7 +4,7 @@ export default function ImageUploaderLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className='flex h-svh min-h-min w-full min-w-min items-center justify-center p-6'>
+    <section className='flex h-svh min-h-min w-full min-w-min items-center justify-center bg-dark-green p-6'>
       {children}
     </section>
   );
