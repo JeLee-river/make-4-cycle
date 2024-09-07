@@ -12,7 +12,7 @@ const config: Config = {
       backgroundImage: {
         main: "url('https://res.cloudinary.com/dr26wooar/image/upload/v1711363534/make4cycle/main.jpg')",
         dropbox:
-          "url('https://res.cloudinary.com/dr26wooar/image/upload/v1725530670/make4cycle/dropbox.png')",
+          "url('https://res.cloudinary.com/dr26wooar/image/upload/v1725689651/make4cycle/dropbox.png')",
       },
       fontFamily: {
         sans: ['Goorm Sans', 'sans-serif'],
