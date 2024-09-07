@@ -24,6 +24,7 @@ const config: Config = {
         green: '#62a568',
         chartreuse: '#a5d16c',
         yellow: '#f9f871',
+        ivory: '#e2e5c1',
       },
     },
   },
