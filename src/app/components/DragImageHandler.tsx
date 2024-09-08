@@ -36,7 +36,7 @@ function DragImageHandler({
         onDragOver={handleDragOver}
         onDrop={handleDrop}
         onClick={handleUploadClick}
-        className='bg-ivory flex h-96 min-h-min w-[32rem] min-w-min cursor-pointer flex-col items-center justify-center gap-4 rounded-lg border-2 border-dashed border-gray-300 bg-dropbox bg-cover bg-center bg-no-repeat p-3 transition-colors hover:border-gray-400'
+        className='flex h-96 min-h-min w-[32rem] min-w-min cursor-pointer flex-col items-center justify-center gap-4 rounded-lg border-2 border-dashed border-gray-300 bg-ivory bg-dropbox bg-cover bg-center bg-no-repeat p-3 transition-colors hover:border-gray-400'
       >
         <h3 className='text-2xl font-medium leading-4 text-dark-green'>
           이미지 드래그 앤 드롭
