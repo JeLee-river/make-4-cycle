@@ -46,13 +46,13 @@ function DragImageHandler({
           height={100}
           alt='업로드 일러스트'
         />
-        <h3 className='text-2xl font-medium leading-4 text-dark-green'>
-          이미지 드래그 앤 드롭
+        <h3 className='text-2xl font-medium leading-3 text-dark-green'>
+          드래그 앤 드롭
         </h3>
         <span className='text-1xl relative font-regular text-dark-green before:absolute before:right-8 before:top-1/2 before:inline-block before:h-px before:w-full before:-translate-y-1/2 before:bg-dark-green before:content-[""] after:absolute after:left-8 after:top-1/2 after:inline-block after:h-px after:w-full after:-translate-y-1/2 after:bg-dark-green after:content-[""]'>
           또는
         </span>
-        <p className='text-2xl font-medium leading-4 text-dark-green'>
+        <p className='text-2xl font-medium leading-3 text-dark-green'>
           클릭하여 파일 선택
         </p>
       </div>
