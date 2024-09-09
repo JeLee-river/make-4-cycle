@@ -42,8 +42,8 @@ function DragImageHandler({
       >
         <Image
           src={process.env.NEXT_PUBLIC_UPLOAD_ICON}
-          width={30}
-          height={30}
+          width={100}
+          height={100}
           alt='업로드 일러스트'
         />
         <h3 className='text-2xl font-medium leading-4 text-dark-green'>
