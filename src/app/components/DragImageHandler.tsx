@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 function DragImageHandler({
   setInputImage,
   handleUploadClick,
@@ -38,6 +40,12 @@ function DragImageHandler({
         onClick={handleUploadClick}
         className='flex h-96 min-h-min w-[32rem] min-w-min cursor-pointer flex-col items-center justify-center gap-4 rounded-lg border-2 border-dashed border-gray-300 bg-ivory bg-dropbox bg-cover bg-center bg-no-repeat p-3 transition-colors hover:border-gray-400'
       >
+        <Image
+          src={process.env.NEXT_PUBLIC_UPLOAD_ICON}
+          width={30}
+          height={30}
+          alt='업로드 일러스트'
+        />
         <h3 className='text-2xl font-medium leading-4 text-dark-green'>
           이미지 드래그 앤 드롭
         </h3>
