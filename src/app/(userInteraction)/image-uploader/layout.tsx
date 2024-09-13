@@ -10,7 +10,7 @@ export default function ImageUploaderLayout({
       <Link
         title='Make 4 cycle 메인페이지로 이동'
         href='/'
-        className='m-4 text-4xl text-white'
+        className='m-6 text-4xl font-medium text-white'
       >
         Make 4 Cycle
       </Link>
