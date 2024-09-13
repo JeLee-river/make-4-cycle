@@ -38,7 +38,7 @@ function DragImageHandler({
         onDragOver={handleDragOver}
         onDrop={handleDrop}
         onClick={handleUploadClick}
-        className='flex h-96 min-h-min w-[32rem] min-w-min cursor-pointer flex-col items-center justify-center gap-4 rounded-lg border-2 border-dashed border-gray-300 bg-ivory bg-dropbox bg-cover bg-center bg-no-repeat p-3 transition-colors hover:border-gray-400'
+        className='box-content flex h-96 min-h-min w-[32rem] min-w-min cursor-pointer flex-col items-center justify-center gap-4 rounded bg-ivory bg-dropbox bg-cover bg-center bg-no-repeat p-3 hover:border-4 hover:border-dashed hover:border-dark-green'
       >
         <Image
           src={process.env.NEXT_PUBLIC_UPLOAD_ICON}
