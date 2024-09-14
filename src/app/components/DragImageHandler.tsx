@@ -38,12 +38,12 @@ function DragImageHandler({
         onDragOver={handleDragOver}
         onDrop={handleDrop}
         onClick={handleUploadClick}
-        className='mt-5 flex aspect-[8/5] min-h-min w-1/3 min-w-min cursor-pointer flex-col items-center justify-center gap-4 rounded bg-ivory bg-dropbox bg-cover bg-center bg-no-repeat p-3 hover:outline-dotted hover:outline-2 hover:outline-white'
+        className='mt-5 flex aspect-[8/5] min-h-min w-1/3 min-w-min cursor-pointer flex-col items-center justify-center rounded bg-ivory bg-dropbox bg-cover bg-center bg-no-repeat p-3 hover:outline-dotted hover:outline-2 hover:outline-white'
       >
         <Image
           src={process.env.NEXT_PUBLIC_UPLOAD_ICON}
-          width={100}
-          height={100}
+          width={90}
+          height={90}
           alt='업로드 일러스트'
         />
         <h3 className='text-1xl font-medium leading-normal text-dark-green'>
