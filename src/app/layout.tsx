@@ -1,6 +1,5 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import Footer from './components/Footer';
 
 export const metadata: Metadata = {
   title: 'Make A Cycle',
@@ -22,9 +21,8 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <div className='flex flex-col'>
+        <div className='flex min-h-dvh min-w-full flex-col items-center justify-center bg-black bg-opacity-30 bg-main bg-cover bg-center bg-blend-darken'>
           {children}
-          <Footer />
         </div>
       </body>
     </html>
