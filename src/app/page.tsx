@@ -13,7 +13,7 @@ export default function Home() {
           </p>
           <Link
             href='/image-uploader'
-            className='text-1xl m-5 min-w-24 rounded-3xl bg-yellow p-2 text-center font-medium text-dark-green hover:bg-green hover:text-white'
+            className='text-1xl m-5 min-w-24 rounded-3xl bg-yellow p-2 text-center font-medium text-dark-green transition-colors hover:bg-green hover:text-white hover:duration-300'
           >
             시작하기
           </Link>
