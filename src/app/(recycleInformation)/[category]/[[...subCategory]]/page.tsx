@@ -5,7 +5,10 @@ async function getRecycleInfo(segment: string) {
   const information = await fetch(
     `${process.env.NEXT_PUBLIC_API}/recycleInfo/${segment}`,
   ).then((res) => res.json());
-  const { imageSource, recycleInfo } = information;
+
+  const { imageSource, recycleInfo } = Array.isArray(information)
+    ? information[0]
+    : information;
 
   return { imageSource, recycleInfo };
 }
@@ -16,8 +19,8 @@ export default async function RecycleInfo({
   params: MaterialType;
 }) {
   const category = params.category;
-  const subCategory = params.subCategory ?? '';
-  const segment = `${category}/${subCategory}`;
+  const subCategory = params.subCategory ?? [];
+  const segment = `${category}/${subCategory.join('/')}`;
   const { imageSource, recycleInfo } = await getRecycleInfo(segment);
 
   return (
