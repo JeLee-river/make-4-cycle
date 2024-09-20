@@ -16,8 +16,8 @@ export default async function RecycleInfo({
   params: MaterialType;
 }) {
   const category = params.category;
-  const subCategory = params.subCategory ?? '';
-  const segment = `${category}/${subCategory}`;
+  const subCategory = params.subCategory ?? [];
+  const segment = `${category}/${subCategory.join('/')}`;
   const { imageSource, recycleInfo } = await getRecycleInfo(segment);
 
   return (

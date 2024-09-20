@@ -5,10 +5,9 @@ export interface RecycleInformationType {
   recycleInfo: string;
 }
 
-export type MaterialType = Pick<
-  RecycleInformationType,
-  'category' | 'subCategory'
->;
+export type MaterialType = Pick<RecycleInformationType, 'category'> & {
+  subCategory?: RecycleInformationType['subCategory'][];
+};
 
 export interface PredictionType extends MaterialType {
   probability: number;
