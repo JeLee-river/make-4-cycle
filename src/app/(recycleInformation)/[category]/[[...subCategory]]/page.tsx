@@ -25,13 +25,12 @@ export default async function RecycleInfo({
 
   return (
     <>
-      <Image
-        src={imageSource}
-        width={400}
-        height={600}
-        alt={`${category}-${subCategory}`}
-      />
-      <h1>{recycleInfo}</h1>
+      <div
+        style={{ '--image-url': `url(${imageSource})` }}
+        className='flex min-h-dvh min-w-full flex-col items-center justify-center bg-white bg-opacity-30 bg-[image:var(--image-url)] bg-cover bg-center bg-blend-darken'
+      >
+        <h1>{recycleInfo}</h1>
+      </div>
     </>
   );
 }
