@@ -10,10 +10,10 @@ export async function GET(
   await connectDB();
 
   const category = params.category;
-  const subCategory = params.subCategory;
+  const subCategory = params.subCategory ?? [];
   const recycleResource = await recycleInfoDAO.findRecycleInfo(
     category,
-    subCategory,
+    ...subCategory,
   );
   if (recycleResource === null) {
     return NextResponse.json(
