@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <>
-      <main>
+      <main className='flex min-h-dvh min-w-full flex-col items-center justify-center bg-black bg-opacity-30 bg-main bg-cover bg-center bg-blend-darken'>
         <section className='flex h-full w-full flex-col items-center justify-center text-center'>
           <h1 className='m-2 text-7xl font-medium text-white'>Make 4 Cycle</h1>
           <p className='text-1xl m-1 text-white'>
@@ -18,8 +18,8 @@ export default function Home() {
             시작하기
           </Link>
         </section>
+        <Footer />
       </main>
-      <Footer />
     </>
   );
 }
