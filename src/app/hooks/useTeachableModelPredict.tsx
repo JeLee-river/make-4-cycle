@@ -4,7 +4,7 @@ import { PredictionType } from '../types/types';
 const teachableMachineURL = process.env.NEXT_PUBLIC_TEACHABLE_MACHINE_URL;
 
 async function useTeachableModelPredict(
-  image: HTMLImageElement
+  image: HTMLImageElement,
 ): Promise<PredictionType> {
   const modelURL = `${teachableMachineURL}model.json`;
   const metadataURL = `${teachableMachineURL}metadata.json`;

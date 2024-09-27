@@ -24,12 +24,14 @@
     }
   },
   "include": [
+    "new-types.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
     "tailwind.config.ts",
-    "postcss.config.js"
+    "postcss.config.js",
+    "src/app/layout.jsx"
   ],
   "exclude": ["node_modules"]
 }
