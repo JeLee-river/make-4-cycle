@@ -4,6 +4,7 @@ import { MaterialType } from '@/app/types/types';
 async function getRecycleInfo(segment: string) {
   const information = await fetch(
     `https://${process.env.VERCEL_URL}/api/recycleInfo/${segment}`,
+    { cache: 'no-store' },
   )
     .then((res) => res.json())
     .catch((error) => console.log(error));
