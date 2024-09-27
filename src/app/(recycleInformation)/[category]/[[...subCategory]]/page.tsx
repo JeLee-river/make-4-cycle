@@ -3,7 +3,7 @@ import { MaterialType } from '@/app/types/types';
 
 async function getRecycleInfo(segment: string) {
   const information = await fetch(
-    `https://${process.env.VERCEL_URL}/recycleInfo/${segment}`,
+    `https://${process.env.VERCEL_URL}/api/recycleInfo/${segment}`,
   ).then((res) => res.json());
 
   const { imageSource, recycleInfo } = Array.isArray(information)
