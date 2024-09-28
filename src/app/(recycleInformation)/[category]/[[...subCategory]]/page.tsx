@@ -4,7 +4,6 @@ import { MaterialType } from '@/app/types/types';
 
 async function getRecycleInfo(segment: string) {
   noStore();
-  console.log(process.env.NODE_ENV);
   const apiURL =
     process.env.NODE_ENV === 'production'
       ? ''
