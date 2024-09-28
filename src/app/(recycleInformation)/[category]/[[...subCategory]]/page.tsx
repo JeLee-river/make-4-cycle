@@ -1,7 +1,9 @@
 import Image from 'next/image';
+import { unstable_noStore as noStore } from 'next/cache';
 import { MaterialType } from '@/app/types/types';
 
 async function getRecycleInfo(segment: string) {
+  noStore();
   const information = await fetch(
     `https://${process.env.VERCEL_URL}/api/recycleInfo/${segment}`,
   )
