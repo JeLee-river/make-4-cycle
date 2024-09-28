@@ -4,9 +4,13 @@ import { MaterialType } from '@/app/types/types';
 
 async function getRecycleInfo(segment: string) {
   noStore();
-  const information = await fetch(
-    `https://${process.env.VERCEL_URL}/api/recycleInfo/${segment}`,
-  )
+  console.log(process.env.NODE_ENV);
+  const apiURL =
+    process.env.NODE_ENV === 'production'
+      ? ''
+      : process.env.NEXT_PUBLIC_API_URL;
+
+  const information = await fetch(`${apiURL}/api/recycleInfo/${segment}`)
     .then((res) => res.json())
     .catch((error) => console.log(error));
 
