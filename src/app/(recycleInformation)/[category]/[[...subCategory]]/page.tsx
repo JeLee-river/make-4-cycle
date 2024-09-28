@@ -1,24 +1,22 @@
 import Image from 'next/image';
-import { unstable_noStore as noStore } from 'next/cache';
 import { MaterialType } from '@/app/types/types';
+import connectDB from '@database/connectDB';
+import { recycleInfoDAO } from '@database/recycleInfoDAO';
+import { notFound } from 'next/navigation';
 
-async function getRecycleInfo(segment: string) {
-  noStore();
-  console.log(process.env.NODE_ENV);
-  const apiURL =
-    process.env.NODE_ENV === 'production'
-      ? ''
-      : process.env.NEXT_PUBLIC_API_URL;
+async function getRecycleInfo(category: string, subCategory?: string) {
+  await connectDB();
 
-  const information = await fetch(`${apiURL}/api/recycleInfo/${segment}`)
-    .then((res) => res.json())
-    .catch((error) => console.log(error));
+  const recycleResource = await recycleInfoDAO.findRecycleInfo(
+    category,
+    subCategory,
+  );
 
-  const { imageSource, recycleInfo } = Array.isArray(information)
-    ? information[0]
-    : information;
+  if (recycleResource === null) {
+    throw new Error(`Cannot find ${category} recycle method`);
+  }
 
-  return { imageSource, recycleInfo };
+  return recycleResource;
 }
 
 export default async function RecycleInfo({
@@ -28,13 +26,21 @@ export default async function RecycleInfo({
 }) {
   const category = params.category;
   const subCategory = params.subCategory ?? [];
-  const segment = `${category}/${subCategory.join('/')}`;
-  const { imageSource, recycleInfo } = await getRecycleInfo(segment);
 
-  return (
-    <>
-      <Image src={imageSource} fill alt='업로드한 이미지' />
-      <h1>{recycleInfo}</h1>
-    </>
-  );
+  try {
+    const information = await getRecycleInfo(category, ...subCategory);
+    const { imageSource, recycleInfo } = Array.isArray(information)
+      ? information[0]
+      : information;
+
+    return (
+      <>
+        <Image src={imageSource} fill alt='업로드한 이미지' />
+        <h1>{recycleInfo}</h1>
+      </>
+    );
+  } catch (error) {
+    console.error('분리수거 정보를 찾을 수 없습니다.', error);
+    notFound();
+  }
 }
