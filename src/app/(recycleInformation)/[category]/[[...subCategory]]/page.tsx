@@ -35,8 +35,12 @@ export default async function RecycleInfo({
 
     return (
       <>
-        <Image src={imageSource} fill alt='업로드한 이미지' />
-        <h1>{recycleInfo}</h1>
+        <div
+          style={{ '--image-url': `url(${imageSource})` }}
+          className='flex min-h-screen min-w-full flex-col items-center justify-center bg-[image:var(--image-url)] bg-cover bg-center'
+        >
+          <h1>{recycleInfo}</h1>
+        </div>
       </>
     );
   } catch (error) {
